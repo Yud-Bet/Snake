@@ -19,19 +19,17 @@ void Snake::redirect(int d)
 	{
 		if (d == 1)
 		{
-			for (int i = 1; i < length; i++)
+			for (int i = length - 1; i > 0; i--)
 			{
-				body[i].x = body[i - 1].x;
-				body[i].y = body[i - 1].y;
+				body[i] = body[i - 1];
 			}
 			body[0].x --;
 		}
 		else if (d == 3)
 		{
-			for (int i = 1; i < length; i++)
+			for (int i = length - 1; i > 0; i--)
 			{
-				body[i].x = body[i - 1].x;
-				body[i].y = body[i - 1].y;
+				body[i] = body[i - 1];
 			}
 			body[0].x ++;
 		}
@@ -41,19 +39,17 @@ void Snake::redirect(int d)
 	{
 		if (d == 0)
 		{
-			for (int i = 1; i < length; i++)
+			for (int i = length - 1; i > 0; i--)
 			{
-				body[i].x = body[i - 1].x;
-				body[i].y = body[i - 1].y;
+				body[i] = body[i - 1];
 			}
 			body[0].y --;
 		}
 		else if (d == 2)
 		{
-			for (int i = 1; i < length; i++)
+			for (int i = length - 1; i > 0; i--)
 			{
-				body[i].x = body[i - 1].x;
-				body[i].y = body[i - 1].y;
+				body[i] = body[i - 1];
 			}
 			body[0].y ++;
 		}
@@ -63,19 +59,17 @@ void Snake::redirect(int d)
 	{
 		if (d == 1)
 		{
-			for (int i = 1; i < length; i++)
+			for (int i = length - 1; i > 0; i--)
 			{
-				body[i].x = body[i - 1].x;
-				body[i].y = body[i - 1].y;
+				body[i] = body[i - 1];
 			}
 			body[0].x --;
 		}
 		else if (d == 3)
 		{
-			for (int i = 1; i < length; i++)
+			for (int i = length - 1; i > 0; i--)
 			{
-				body[i].x = body[i - 1].x;
-				body[i].y = body[i - 1].y;
+				body[i] = body[i - 1];
 			}
 			body[0].x ++;
 		}
@@ -85,19 +79,17 @@ void Snake::redirect(int d)
 	{
 		if (d == 0)
 		{
-			for (int i = 1; i < length; i++)
+			for (int i = length - 1; i > 0; i--)
 			{
-				body[i].x = body[i - 1].x;
-				body[i].y = body[i - 1].y;
+				body[i] = body[i - 1];
 			}
 			body[0].y --;
 		}
 		else if (d == 2)
 		{
-			for (int i = 1; i < length; i++)
+			for (int i = length - 1; i > 0; i--)
 			{
-				body[i].x = body[i - 1].x;
-				body[i].y = body[i - 1].y;
+				body[i] = body[i - 1];
 			}
 			body[0].y ++;
 		}
@@ -146,5 +138,28 @@ void Snake::move()
 		}
 		body[0].x++;
 		if (body[0].x > w) body[0].x = 0;
+	}
+}
+
+void Snake::make_longer()
+{
+	if (length < mem_allocated)
+	{
+		body[length] = body[length - 1];
+		length++;
+	}
+	else
+	{
+		mem_allocated *= 2;
+		coord* temp = new coord[mem_allocated];
+		for (int i = 0; i < length; i++)
+		{
+			temp[i] = body[i];
+		}
+		delete[] body;
+		body = temp;
+
+		body[length] = body[length - 1];
+		length++;
 	}
 }
