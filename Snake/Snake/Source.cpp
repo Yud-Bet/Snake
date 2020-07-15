@@ -18,7 +18,8 @@ int main()
 	{
 		a.move();
 		a.print_snake();
-		sleep_for(milliseconds(50));
+		a.make_longer();
+		sleep_for(milliseconds(100));
 		system("CLS");
 		int inp = inputKey();
 

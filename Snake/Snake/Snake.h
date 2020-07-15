@@ -14,6 +14,7 @@ private:
 	int h;
 	int direction;
 	int length;
+	int mem_allocated;
 	coord* body;
 public:
 	Snake(int width, int height)
@@ -21,7 +22,7 @@ public:
 		w = width;
 		h = height;
 		direction = 3;
-		length = 3;
+		length = mem_allocated = 3;
 		body = new coord[3];
 		body[0].x = width / 2;
 		body[0].y = height / 2;
@@ -34,4 +35,9 @@ public:
 	void print_snake();
 	void redirect(int);
 	void move();
+	void make_longer();
+	~Snake() 
+	{
+		delete[] body;
+	}
 };
