@@ -40,9 +40,3 @@ void ShowConsoleCursor(bool showFlag)
 	cursorInfo.bVisible = showFlag; // set the cursor visibility
 	SetConsoleCursorInfo(out, &cursorInfo);
 }
-int Randoms(int lower, int upper)
-{
-	int i;
-	int num = (rand() % (upper - lower + 1)) + lower;
-	return num;
-}
