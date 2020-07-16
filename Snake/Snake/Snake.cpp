@@ -2,6 +2,7 @@
 #include "my_console.h"
 #include <iostream>
 #include <math.h>
+#include <time.h> 
 
 void Snake::print_snake()
 {
@@ -11,10 +12,9 @@ void Snake::print_snake()
 		std::cout << char(254);
 	}
 }
-
 void Snake::redirect(int d)
 {
-	if (d == direction || abs(d - direction) == 2) return;
+	if (d == direction || abs(d - direction) == 2) return ;
 	else if (direction == 0)
 	{
 		if (d == 1)
@@ -96,7 +96,6 @@ void Snake::redirect(int d)
 		direction = d;
 	}
 }
-
 void Snake::move()
 {
 	if (direction == 0)
@@ -140,7 +139,9 @@ void Snake::move()
 		if (body[0].x > w) body[0].x = 0;
 	}
 }
-
+int Snake::getLength() {
+	return length;
+}
 void Snake::make_longer()
 {
 	if (length < mem_allocated)
@@ -161,5 +162,41 @@ void Snake::make_longer()
 
 		body[length] = body[length - 1];
 		length++;
+	}
+}
+bool Snake::is_snake_being_eaten()
+{
+	for (int i = 1; i < length; i++)
+	{
+		if (body[0].x == body[i].x && body[0].y == body[i].y)
+			return true;
+	}
+	return false;
+}
+coord Snake::getBody(int n) {
+	return body[n];
+}
+void Food::print_food(){
+	gotoxy(vitri.x, vitri.y);
+	std::cout << '*';
+}
+coord Food::getVitri() {
+	coord toado;
+	toado.x = vitri.x;
+	toado.y = vitri.y;
+	return toado;
+}
+void Food::newfood(Snake &a) {
+	bool out{ 0 };
+	while (out==false) {
+		srand(time(0));
+		vitri.x = Randoms(0, 30);
+		vitri.y = Randoms(0, 20);
+		for (int i{ 0 }; i < a.getLength(); i++) {
+			if (!(vitri.x == a.getBody(i).x && vitri.y == a.getBody(i).y)) {
+				out = true;
+				break;
+			}
+		}
 	}
 }

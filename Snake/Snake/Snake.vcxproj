@@ -141,11 +141,13 @@
   <ItemGroup>
     <ClCompile Include="my_console.cpp" />
     <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="snake_map.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="my_console.h" />
     <ClInclude Include="Snake.h" />
+    <ClInclude Include="snake_map.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
