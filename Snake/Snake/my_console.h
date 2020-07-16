@@ -8,3 +8,4 @@
 void gotoxy(int, int);
 int inputKey();
 void ShowConsoleCursor(bool);
+int Randoms(int lower, int upper);
