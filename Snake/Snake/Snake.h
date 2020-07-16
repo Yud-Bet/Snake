@@ -1,6 +1,5 @@
 #pragma once
 
-
 struct coord
 {
 	int x;
@@ -39,18 +38,13 @@ public:
 	void make_longer();
 	bool is_snake_being_eaten();
 	coord getBody(int n);
+	int getw();
+	int geth();
 	int getLength();
 	~Snake() 
 	{
 		delete[] body;
 	}
 };
-class Food {
-private:
-	coord vitri;
-public:
-	void print_food();
-	coord getVitri();
-	void newfood(Snake &a);
-};
+
 

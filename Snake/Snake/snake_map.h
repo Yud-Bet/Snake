@@ -15,3 +15,11 @@ public:
 	void print_map();
 };
 
+class Food {
+private:
+	coord vitri;
+public:
+	void print_food();
+	coord getVitri();
+	void newfood(Snake& a, snake_map& b);
+};

@@ -2,7 +2,7 @@
 #include "my_console.h"
 #include <iostream>
 #include <math.h>
-#include <time.h> 
+
 
 void Snake::print_snake()
 {
@@ -176,27 +176,11 @@ bool Snake::is_snake_being_eaten()
 coord Snake::getBody(int n) {
 	return body[n];
 }
-void Food::print_food(){
-	gotoxy(vitri.x, vitri.y);
-	std::cout << '*';
+int Snake::getw() {
+	return w;
 }
-coord Food::getVitri() {
-	coord toado;
-	toado.x = vitri.x;
-	toado.y = vitri.y;
-	return toado;
+int Snake::geth() {
+	return h;
 }
-void Food::newfood(Snake &a) {
-	bool out{ 0 };
-	while (out==false) {
-		srand(time(0));
-		vitri.x = Randoms(0, 30);
-		vitri.y = Randoms(0, 20);
-		for (int i{ 0 }; i < a.getLength(); i++) {
-			if (!(vitri.x == a.getBody(i).x && vitri.y == a.getBody(i).y)) {
-				out = true;
-				break;
-			}
-		}
-	}
-}
+
+

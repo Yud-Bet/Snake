@@ -15,9 +15,9 @@ using namespace std::chrono;
 int main()
 {
 	Snake a(30, 20);
-	Food food;
-	food.newfood(a);
 	snake_map newMap(30, 20);
+	Food food;
+	food.newfood(a,newMap);
 	ShowConsoleCursor(false);
 	for (;;)
 	{	//basic moving
@@ -43,7 +43,18 @@ int main()
 		
 		if (a.getBody(0).x == food.getVitri().x && a.getBody(0).y == food.getVitri().y) {
 			a.make_longer();
-			food.newfood(a);
+			a.make_longer();
+			a.make_longer();
+			a.make_longer();
+			a.make_longer();
+			a.make_longer();
+			a.make_longer();
+			a.make_longer();
+			a.make_longer();
+			a.make_longer();
+			a.make_longer();
+
+			food.newfood(a, newMap);
 		}
 		
 		if (a.is_snake_being_eaten() || newMap.is_map_being_eaten(a.getBody(0)))
